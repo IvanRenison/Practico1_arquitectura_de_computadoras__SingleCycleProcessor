@@ -1,0 +1,54 @@
+# do SingleCycleProcessor_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying /home/ivan/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/flopr.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:13:56 on Aug 27,2022
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/flopr.sv 
+# -- Compiling module flopr
+# 
+# Top level modules:
+# 	flopr
+# End time: 18:13:57 on Aug 27,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/flopr_tb.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 18:13:57 on Aug 27,2022
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/flopr_tb.sv 
+# -- Compiling module flopr_tb
+# 
+# Top level modules:
+# 	flopr_tb
+# End time: 18:13:57 on Aug 27,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"   flopr_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" flopr_tb 
+# Start time: 18:13:57 on Aug 27,2022
+# Loading sv_std.std
+# Loading work.flopr_tb
+# Loading work.flopr
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+#  4 tests completed with  0 errors
+# ** Note: $stop    : /home/ivan/Desktop/SingleCycleProcessor/flopr_tb.sv(54)
+#    Time: 360 ns  Iteration: 0  Instance: /flopr_tb
+# Break in Module flopr_tb at /home/ivan/Desktop/SingleCycleProcessor/flopr_tb.sv line 54
+# 
+# stdin: <EOF>
+# End time: 18:17:25 on Aug 27,2022, Elapsed time: 0:03:28
+# Errors: 0, Warnings: 0
