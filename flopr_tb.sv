@@ -1,6 +1,6 @@
 module flopr_tb();
 
-	parameter N = 10;
+	parameter N = 64;
 
 	logic clk, reset;
 	logic [N-1:0] d;
@@ -38,9 +38,8 @@ module flopr_tb();
 
 
 	always @(posedge clk) begin
-		// ds[i] = $random;
 		d = ds[i];
-		
+
 		if (1 <= i && i <= 5) begin
 			if (q !== 0) begin
 				$display("Error: q !== '0");
@@ -56,7 +55,7 @@ module flopr_tb();
 
 		i = i+1;
 		$display("DIS i = %d", i);
-		if (10 < i) begin
+		if (d === 'x) begin // Cuando ds se indexo fuera de rango
 			$display("Total errors: %d", errors);
 			$stop;
 		end
