@@ -1,8 +1,8 @@
 `define armarLDUR(inmediato_9) {11'b111_1100_0010, inmediato_9, 12'b00_01001_10110}
-`define armarLDUR_res(inmediato_9) {{55{inmediato_9[10]}}, inmediato_9}
+`define armarLDUR_res(inmediato_9) {{55{inmediato_9[8]}}, inmediato_9}
 
 `define armarSTUR(inmediato_9) {11'b111_1100_0000, inmediato_9, 12'b00_01001_10110}
-`define armarSTUR_res(inmediato_9) {{55{inmediato_9[10]}}, inmediato_9}
+`define armarSTUR_res(inmediato_9) {{55{inmediato_9[8]}}, inmediato_9}
 
 `define armarCBZ(inmediato_19) {8'b101_1010_0, inmediato_19, 5'b10110}
 `define armarCBZ_res(inmediato_19) {{45{inmediato_19[18]}}, inmediato_19}
@@ -51,19 +51,20 @@ module signext_tb();
 
 	signext dut(in, out);
 
+	logic [31:0] errors;
 	always begin
-		$display("inputs = %p\nexpected_outputs = %p", inputs, expected_outputs);
-		//logic errors = 0;
+		errors = 0;
 
 		for (int i=0; i<6; ++i) begin
-			#1ns;
+			
 			in = inputs[i];
-
+			#1ns;
 			if (out !== expected_outputs[i]) begin
-				//errors = errors + 1;
+				errors = errors + 1;
 				$display("ERROR:\n  expected = %d, got = %d\n  in=%b", expected_outputs[i], out, in);
 			end
 		end
+		$display("Total errors: %d", errors);
 		$stop;
 	end
 
