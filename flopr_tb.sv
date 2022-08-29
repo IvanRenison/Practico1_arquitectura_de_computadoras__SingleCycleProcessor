@@ -8,7 +8,7 @@ module flopr_tb();
 
 	flopr #(N) dut(clk, reset, d, q);
 	
-	logic [N-1:0] [9:0] ds;
+	logic [N-1:0] ds [9:0];
 	
 	logic [31:0] i, errors;
 
@@ -40,24 +40,31 @@ module flopr_tb();
 	always @(posedge clk) begin
 		d = ds[i];
 
-		if (1 <= i && i <= 5) begin
+		#1ns;
+
+	end
+
+	always @(negedge clk) begin
+
+		if (reset === '1) begin
 			if (q !== 0) begin
 				$display("Error: q !== '0");
 				errors = errors + 1;
 			end
 		end
-		if (6 <= i && i <= 9) begin
-			if (q !== ds[i-2]) begin
+		if (reset === '0) begin
+			if (q !== ds[i-1]) begin
 				$display("Error: q !== ds[i-1]");
 				errors = errors + 1;
 			end
 		end
 
-		i = i+1;
-		$display("DIS i = %d", i);
 		if (d === 'x) begin // Cuando ds se indexo fuera de rango
 			$display("Total errors: %d", errors);
 			$stop;
 		end
+
+		i = i+1;
+		$display("i = %d", i);
 	end
 endmodule
