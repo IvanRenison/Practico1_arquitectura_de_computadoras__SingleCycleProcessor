@@ -57,6 +57,30 @@ module regfile_tb(); // 🤔 Por que los warings?
 
 			#5ns;
 		end
+		
+		// Testeo de xvz
+		we3 = 0;
+		ra1 = 5'b11111;
+		ra2 = 5'b11111;
+		
+		#1ns;
+
+		if (rd1 !== 64'b0 || rd2 !== 64'b0) begin
+			$display("ERROR: rd1 !== 64'b0 || rd2 !== 64'b0____");
+			errors++;
+		end
+
+		#1ns
+
+		wa3 = 5'b11111;
+		we3 = 1;
+
+		#20ns;
+
+		if (rd1 !== 64'b0 || rd2 !== 64'b0) begin
+			$display("ERROR: rd1 !== 64'b0 || rd2 !== 64'b0");
+			errors++;
+		end
 
 		$display("Total errors = %d", errors);
 		$stop;

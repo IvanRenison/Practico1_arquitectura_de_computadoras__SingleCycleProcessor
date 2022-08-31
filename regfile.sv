@@ -16,8 +16,8 @@ module regfile(
 
 	// Leer registers
 	always_comb begin
-		rd1 <= ra1 != 5'b11111 ? registers[ra1] : 64'b0;
-		rd2 <= ra2 != 5'b11111 ? registers[ra2] : 64'b0;
+		rd1 <= registers[ra1];
+		rd2 <= registers[ra2];
 	end
 
 
