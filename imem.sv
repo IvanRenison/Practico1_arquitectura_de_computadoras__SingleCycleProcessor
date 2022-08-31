@@ -4,7 +4,7 @@ module imem #(parameter N = 32) ( // 🤔 Por que los warings?
 	);
 
 
-	logic [N-1:0] rom [63:0] = '{
+	logic [N-1:0] rom [0:63] = '{
 		32'hf8000001, 32'hf8008002, 32'hf8000203, 32'h8b050083,
 		32'hf8018003, 32'hcb050083, 32'hf8020003, 32'hcb0a03e4,
 		32'hf8028004, 32'h8b040064, 32'hf8030004, 32'hcb030025,

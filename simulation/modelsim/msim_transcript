@@ -11,29 +11,29 @@
 # 
 # vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/imem.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 09:52:18 on Aug 31,2022
+# Start time: 10:14:36 on Aug 31,2022
 # vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/imem.sv 
 # -- Compiling module imem
 # 
 # Top level modules:
 # 	imem
-# End time: 09:52:19 on Aug 31,2022, Elapsed time: 0:00:01
+# End time: 10:14:36 on Aug 31,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 09:52:19 on Aug 31,2022
+# Start time: 10:14:36 on Aug 31,2022
 # vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv 
 # -- Compiling module imem_tb
 # 
 # Top level modules:
 # 	imem_tb
-# End time: 09:52:19 on Aug 31,2022, Elapsed time: 0:00:00
+# End time: 10:14:36 on Aug 31,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  imem_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" imem_tb 
-# Start time: 09:52:19 on Aug 31,2022
+# Start time: 10:14:36 on Aug 31,2022
 # Loading sv_std.std
 # Loading work.imem_tb
 # Loading work.imem
@@ -44,75 +44,11 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# ERROR, i =  0
-# ERROR, i =  1
-# ERROR, i =  2
-# ERROR, i =  3
-# ERROR, i =  4
-# ERROR, i =  5
-# ERROR, i =  6
-# ERROR, i =  7
-# ERROR, i =  8
-# ERROR, i =  9
-# ERROR, i = 10
-# ERROR, i = 11
-# ERROR, i = 12
-# ERROR, i = 13
-# ERROR, i = 14
-# ERROR, i = 15
-# ERROR, i = 16
-# ERROR, i = 17
-# ERROR, i = 18
-# ERROR, i = 19
-# ERROR, i = 20
-# ERROR, i = 21
-# ERROR, i = 22
-# ERROR, i = 23
-# ERROR, i = 24
-# ERROR, i = 25
-# ERROR, i = 26
-# ERROR, i = 27
-# ERROR, i = 28
-# ERROR, i = 29
-# ERROR, i = 30
-# ERROR, i = 31
-# ERROR, i = 32
-# ERROR, i = 33
-# ERROR, i = 34
-# ERROR, i = 35
-# ERROR, i = 36
-# ERROR, i = 37
-# ERROR, i = 38
-# ERROR, i = 39
-# ERROR, i = 40
-# ERROR, i = 41
-# ERROR, i = 42
-# ERROR, i = 43
-# ERROR, i = 44
-# ERROR, i = 45
-# ERROR, i = 46
-# ERROR, i = 47
-# ERROR, i = 48
-# ERROR, i = 49
-# ERROR, i = 50
-# ERROR, i = 51
-# ERROR, i = 52
-# ERROR, i = 53
-# ERROR, i = 54
-# ERROR, i = 55
-# ERROR, i = 56
-# ERROR, i = 57
-# ERROR, i = 58
-# ERROR, i = 59
-# ERROR, i = 60
-# ERROR, i = 61
-# ERROR, i = 62
-# ERROR, i = 63
-# Total errors:          64
+# Total errors:           0
 # ** Note: $stop    : /home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv(77)
 #    Time: 128 ps  Iteration: 0  Instance: /imem_tb
 # Break in Module imem_tb at /home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv line 77
 # 
 # stdin: <EOF>
-# End time: 09:52:29 on Aug 31,2022, Elapsed time: 0:00:10
+# End time: 10:14:44 on Aug 31,2022, Elapsed time: 0:00:08
 # Errors: 0, Warnings: 0

@@ -1,6 +1,6 @@
 module imem_tb(); // No anda
 	
-	logic [31:0] data [46:0] = '{
+	logic [31:0] data [0:46] = '{
 		32'hf8000001,
 		32'hf8008002,
 		32'hf8000203,
