@@ -1,7 +1,7 @@
 module alu_tb();
 
 	logic [196:0] inputs_and_expected_outputs [29:0] = {
-		//a       b         control  result      zero
+		//a       b         control  result    zero
 		{64'd0  , 64'd0   , 4'b0000, 64'd0   , 1'b1}, // &
 		{64'd0  , 64'd0   , 4'b0001, 64'd0   , 1'b1}, // |
 		{64'd0  , 64'd0   , 4'b0010, 64'd0   , 1'b1}, // +
