@@ -74,13 +74,13 @@ set_global_assignment -name EDA_TEST_BENCH_NAME imem_tb -section_id eda_simulati
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id imem_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME imem_tb -section_id imem_tb
 set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name SYSTEMVERILOG_FILE regfile_tb.sv
 set_global_assignment -name EDA_TEST_BENCH_NAME regfile_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id regfile_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME regfile_tb -section_id regfile_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE flopr_tb.sv -section_id " flopr_tb"
 set_global_assignment -name EDA_TEST_BENCH_FILE signext_tb.sv -section_id signext_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE alu_tb.sv -section_id alu_tb

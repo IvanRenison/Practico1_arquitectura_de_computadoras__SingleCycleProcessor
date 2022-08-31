@@ -1,4 +1,4 @@
-module regfile_tb(); // 🤔 Por que los warings?
+module regfile_tb();
 
 	logic clk, we3;
 	logic [4:0] ra1, ra2, wa3;
@@ -57,16 +57,16 @@ module regfile_tb(); // 🤔 Por que los warings?
 
 			#5ns;
 		end
-		
-		// Testeo de xvz
+
+		// Testeo de xzr
 		we3 = 0;
 		ra1 = 5'b11111;
 		ra2 = 5'b11111;
-		
+
 		#1ns;
 
 		if (rd1 !== 64'b0 || rd2 !== 64'b0) begin
-			$display("ERROR: rd1 !== 64'b0 || rd2 !== 64'b0____");
+			$display("ERROR: rd1 !== 64'b0 || rd2 !== 64'b0");
 			errors++;
 		end
 
