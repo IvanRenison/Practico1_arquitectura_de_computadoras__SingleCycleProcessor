@@ -1,71 +1,68 @@
-module alu_tb(); // 🛠
+module alu_tb();
 
-	logic [63:0] as [2:0] = {
-		55, -68, 59
-	};
-	logic [63:0] bs [2:0] = {
-		23, -63, -36
-	};
+	logic [196:0] inputs_and_expected_outputs [29:0] = {
+		//a       b         control  result      zero
+		{64'd0  , 64'd0   , 4'b0000, 64'd0   , 1'b1}, // &
+		{64'd0  , 64'd0   , 4'b0001, 64'd0   , 1'b1}, // |
+		{64'd0  , 64'd0   , 4'b0010, 64'd0   , 1'b1}, // +
+		{64'd0  , 64'd0   , 4'b0110, 64'd0   , 1'b1}, // -
+		{64'd0  , 64'd0   , 4'b0111, 64'd0   , 1'b1}, // pass b
 
-	logic [63:0] [2:0] expected_results_and = {
-		as[2] & bs[2], as[1] & bs[1], as[0] & bs[0]
-	};
-	logic [63:0] [2:0] expected_results_or = {
-		as[2] | bs[2], as[1] | bs[1], as[0] | bs[0]
-	};
-	logic [63:0] [2:0] expected_results_mas = {
-		as[2] + bs[2], as[1] + bs[1], as[0] + bs[0]
-	};
-	logic [63:0] [2:0] expected_results_menos = {
-		as[2] - bs[2], as[1] - bs[1], as[0] - bs[0]
-	};
-	logic [63:0] [2:0] expected_results_pass_b = {
-		bs[2], bs[1], bs[0]
-	};
+		{64'd593, 64'd0   , 4'b0000, 64'd0   , 1'b1}, // &
+		{64'd593, 64'd0   , 4'b0001, 64'd593 , 1'b0}, // |
+		{64'd593, 64'd0   , 4'b0010, 64'd593 , 1'b0}, // +
+		{64'd593, 64'd0   , 4'b0110, 64'd593 , 1'b0}, // -
+		{64'd593, 64'd0   , 4'b0111, 64'd0   , 1'b1},  // pass b
 
+		{64'd0  , -64'd635, 4'b0000, 64'd0   , 1'b1}, // &
+		{64'd0  , -64'd635, 4'b0001, -64'd635, 1'b0}, // |
+		{64'd0  , -64'd635, 4'b0010, -64'd635, 1'b0}, // +
+		{64'd0  , -64'd635, 4'b0110, 64'd635 , 1'b0}, // -
+		{64'd0  , -64'd635, 4'b0111, -64'd635, 1'b0}, // pass b
 
-	logic [3:0] control_inputs [4:0] = {
-		4'b0000,
-		4'b0001,
-		4'b0010,
-		4'b0110,
-		4'b0111
-	};
+		{64'd239, 64'd26  , 4'b0000, 64'd10  , 1'b0}, // &
+		{64'd239, 64'd26  , 4'b0001, 64'd255 , 1'b0}, // |
+		{64'd239, 64'd26  , 4'b0010, 64'd265 , 1'b0}, // +
+		{64'd239, 64'd26  , 4'b0110, 64'd213 , 1'b0}, // -
+		{64'd239, 64'd26  , 4'b0111, 64'd26  , 1'b0}, // pass b
 
-	logic [63:0] [2:0] [4:0] expected_results = {
-		expected_results_and,
-		expected_results_or,
-		expected_results_mas,
-		expected_results_menos,
-		expected_results_pass_b
+		{-64'd98, -64'd407, 4'b0000, -64'd504, 1'b0}, // &
+		{-64'd98, -64'd407, 4'b0001, -64'd1  , 1'b0}, // |
+		{-64'd98, -64'd407, 4'b0010, -64'd505, 1'b0}, // +
+		{-64'd98, -64'd407, 4'b0110, 64'd309 , 1'b0}, // -
+		{-64'd98, -64'd407, 4'b0111, -64'd407, 1'b0}, // pass b
+
+		{64'd930, -64'd33 , 4'b0000, 64'd898 , 1'b0}, // &
+		{64'd930, -64'd33 , 4'b0001, -64'd1  , 1'b0}, // |
+		{64'd930, -64'd33 , 4'b0010, 64'd897 , 1'b0}, // +
+		{64'd930, -64'd33 , 4'b0110, 64'd963 , 1'b0}, // -
+		{64'd930, -64'd33 , 4'b0111, -64'd33 , 1'b0}  // pass b
 	};
 
 	logic [63:0] a, b;
 	logic [3:0] ALUControl;
-	logic [63:0] result;
-	logic zero;
+	logic [63:0] result, expected_result;
+	logic zero, expected_zero;
 
 	alu dut(a, b, ALUControl, result, zero);
 
 	logic [31:0] errors;
 	always begin
-		$display("%p", expected_results);
 		errors = 0;
 
-		for (int i=0; i<3; ++i) begin
-			a = as[i];
-			b = bs[i];
-
-			for (int j=0; j<5; ++j) begin
-				ALUControl = control_inputs[j];
-
-				#1ns;
-
-				if (result !== expected_results[j*3 + i]) begin
-					errors = errors + 1;
-					$display("i=%d, j=%d, a=%d, b=%d\n, result = %d, expected_results[j*3 + i] = %d\n", i, j, a, b, result, expected_results[j*3 + i]);
-				end
+		for (int i=0; i<10; ++i) begin
+			#1ns;
+			{a, b, ALUControl, expected_result, expected_zero} = inputs_and_expected_outputs[i];
+			#1ns;
+			if (result !== expected_result) begin
+				$display("ERROR: result !== expected_result with i = %d", i);
+				errors++;
 			end
+			if (zero !== expected_zero) begin
+				$display("ERROR: zero !== expected_zero with i = %d", i);
+				errors++;
+			end
+			#1ns;
 		end
 		$display("Total errors: %d", errors);
 		$stop;

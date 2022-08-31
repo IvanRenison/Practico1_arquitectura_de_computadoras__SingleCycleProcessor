@@ -11,29 +11,29 @@
 # 
 # vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/imem.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 19:53:09 on Aug 29,2022
+# Start time: 09:52:18 on Aug 31,2022
 # vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/imem.sv 
 # -- Compiling module imem
 # 
 # Top level modules:
 # 	imem
-# End time: 19:53:09 on Aug 29,2022, Elapsed time: 0:00:00
+# End time: 09:52:19 on Aug 31,2022, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+/home/ivan/Desktop/SingleCycleProcessor {/home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 19:53:09 on Aug 29,2022
+# Start time: 09:52:19 on Aug 31,2022
 # vlog -reportprogress 300 -sv -work work "+incdir+/home/ivan/Desktop/SingleCycleProcessor" /home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv 
 # -- Compiling module imem_tb
 # 
 # Top level modules:
 # 	imem_tb
-# End time: 19:53:09 on Aug 29,2022, Elapsed time: 0:00:00
+# End time: 09:52:19 on Aug 31,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  imem_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" imem_tb 
-# Start time: 19:53:09 on Aug 29,2022
+# Start time: 09:52:19 on Aug 31,2022
 # Loading sv_std.std
 # Loading work.imem_tb
 # Loading work.imem
@@ -114,5 +114,5 @@
 # Break in Module imem_tb at /home/ivan/Desktop/SingleCycleProcessor/imem_tb.sv line 77
 # 
 # stdin: <EOF>
-# End time: 19:53:19 on Aug 29,2022, Elapsed time: 0:00:10
+# End time: 09:52:29 on Aug 31,2022, Elapsed time: 0:00:10
 # Errors: 0, Warnings: 0
