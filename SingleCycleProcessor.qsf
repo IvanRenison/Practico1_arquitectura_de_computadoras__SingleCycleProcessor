@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE auto
-set_global_assignment -name TOP_LEVEL_ENTITY maindec
+set_global_assignment -name TOP_LEVEL_ENTITY fetch
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:43:51  AUGUST 26, 2022"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
@@ -79,9 +79,6 @@ set_global_assignment -name EDA_TEST_BENCH_NAME regfile_tb -section_id eda_simul
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id regfile_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME regfile_tb -section_id regfile_tb
 set_global_assignment -name SYSTEMVERILOG_FILE maindec.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name SYSTEMVERILOG_FILE maindec_tb.sv
 set_global_assignment -name EDA_TEST_BENCH_NAME maindec_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id maindec_tb
@@ -92,4 +89,10 @@ set_global_assignment -name EDA_TEST_BENCH_FILE alu_tb.sv -section_id alu_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE imem_tb.sv -section_id imem_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE regfile_tb.sv -section_id regfile_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE maindec_tb.sv -section_id maindec_tb
+set_global_assignment -name SYSTEMVERILOG_FILE fetch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux2.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder.sv
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
