@@ -22,9 +22,9 @@ module maindec(
 				MemtoReg <= 1'b0;
 				RegWrite <= 1'b0;
 				MemRead <= 1'b0;
-				MemWrite <= 1'b0;
-				Branch <= 1'b1;
-				ALUOp <= 2'b01;
+				MemWrite <= 1'b1;
+				Branch <= 1'b0;
+				ALUOp <= 2'b00;
 			end
 		11'b101_1010_0???: begin  // CBZ
 				Reg2Loc <= 1'b1;
@@ -33,14 +33,14 @@ module maindec(
 				RegWrite <= 1'b0;
 				MemRead <= 1'b0;
 				MemWrite <= 1'b0;
-				Branch <= 1'b0;
-				ALUOp <= 2'b00;
+				Branch <= 1'b1;
+				ALUOp <= 2'b01;
 			end
 		11'b100_0101_1000, 11'b110_0101_1000, 11'b100_0101_0000, 11'b101_0101_0000: begin // ADD, SUB, AND, ORR (tipo R)
 				Reg2Loc <= 1'b0;
 				ALUSrc <= 1'b0;
-				MemtoReg <= 1'b1;
-				RegWrite <= 1'b0;
+				MemtoReg <= 1'b0;
+				RegWrite <= 1'b1;
 				MemRead <= 1'b0;
 				MemWrite <= 1'b0;
 				Branch <= 1'b0;
