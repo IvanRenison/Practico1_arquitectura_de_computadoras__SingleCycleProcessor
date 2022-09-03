@@ -13,6 +13,6 @@ module alu(
 			default: result = '1;
 		endcase;
 
-		zero = result == '0? '1 : '0;
+		zero = result == '0 ? '1 : '0;
 	end
 endmodule

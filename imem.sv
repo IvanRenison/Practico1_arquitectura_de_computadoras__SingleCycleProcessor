@@ -1,4 +1,4 @@
-module imem #(parameter N = 32) ( // 🤔 Por que los warings?
+module imem #(parameter N = 32) ( // Los warnings están bien
 		input logic [5:0] addr,
 		output logic [N-1:0] q
 	);
