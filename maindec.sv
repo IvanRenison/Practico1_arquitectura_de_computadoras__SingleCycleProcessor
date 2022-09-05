@@ -1,11 +1,11 @@
 module maindec( // 🤔 Warnings
-		input logic [10:0] opcode,
+		input logic [10:0] Op,
 		output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch,
 		output logic [1:0] ALUOp
 	);
 
 	always_comb begin
-		casez(opcode)
+		casez(Op)
 		11'b111_1100_0010: begin // LDUR
 				Reg2Loc <= 1'b0;
 				ALUSrc <= 1'b1;
