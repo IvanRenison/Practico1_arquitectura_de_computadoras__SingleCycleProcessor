@@ -1,13 +1,14 @@
 module fetch_tb();
 
-	logic PCSrc_F, clk, reset;
-	logic [63:0] PCBranch_F;
+	logic PCSrc_F, clk, reset, EProc_F;
+	logic [63:0] PCBranch_F, EVAddr_F;
 	logic [63:0] imem_addr_F;
 
 	fetch #(64) dut(
-		.PCSrc_F(PCSrc_F), .clk(clk), .reset(reset),
+		.PCSrc_F(PCSrc_F), .clk(clk), .reset(reset), .EProc_F(EProc_F),
 		.PCBranch_F(PCBranch_F),
-		.imem_addr_F(imem_addr_F)
+		.imem_addr_F(imem_addr_F),
+		.NextPC_F(NextPC_F)
 	);
 
 	// Reloj
@@ -24,6 +25,9 @@ module fetch_tb();
 	logic [63:0] last_PC;
 	int errors;
 	initial begin
+		EProc_F = 0;
+		EVAddr_F = 0;
+
 		errors = 0;
 		last_PC = 0;
 		PCSrc_F = 1'b0;
