@@ -1,4 +1,4 @@
-module maindec( // 🤔 Warnings
+module maindec(
 		input logic [10:0] Op,
 		output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch,
 		output logic [1:0] ALUOp
