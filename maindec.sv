@@ -89,7 +89,7 @@ module maindec(
 				ERet <= 1'b0;
 				ALUSrc <= 2'b00;
 				ALUOp <= 2'b00;
-				EStatus <= 4'b0000;
+				EStatus <= 4'b0010;
 			end
 		endcase
 	end
