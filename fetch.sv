@@ -4,11 +4,11 @@ module fetch #(parameter N = 64) (
 		output logic [N-1:0] imem_addr_F
 	);
 
-	logic [N-1:0] temp1;
-	logic [N-1:0] temp2;
+	logic [N-1:0] add_out;
+	logic [N-1:0] mux2_out;
 
-	mux2 #(N) mux(temp1, PCBranch_F, PCSrc_F, temp2);
-	flopr #(N) pc(clk, reset, temp2, imem_addr_F);
-	adder #(N) add(imem_addr_F, N'('d4), temp1);
+	mux2 #(N) mux(add_out, PCBranch_F, PCSrc_F, mux2_out);
+	flopr #(N) pc(clk, reset, mux2_out, imem_addr_F);
+	adder #(N) add(imem_addr_F, N'('d4), add_out);
 
 endmodule
