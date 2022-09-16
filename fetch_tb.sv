@@ -4,7 +4,11 @@ module fetch_tb();
 	logic [63:0] PCBranch_F;
 	logic [63:0] imem_addr_F;
 
-	fetch dut(PCSrc_F, clk, reset, PCBranch_F, imem_addr_F);
+	fetch #(64) dut(
+		.PCSrc_F(PCSrc_F), .clk(clk), .reset(reset),
+		.PCBranch_F(PCBranch_F),
+		.imem_addr_F(imem_addr_F)
+	);
 
 	// Reloj
 	always begin
