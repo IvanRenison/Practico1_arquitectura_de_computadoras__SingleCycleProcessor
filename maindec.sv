@@ -7,7 +7,7 @@ module maindec(
 	always_comb begin
 		casez(Op)
 		11'b111_1100_0010: begin // LDUR
-				Reg2Loc <= 1'b0;
+				Reg2Loc <= 1'bx;
 				ALUSrc <= 1'b1;
 				MemtoReg <= 1'b1;
 				RegWrite <= 1'b1;
@@ -19,7 +19,7 @@ module maindec(
 		11'b111_1100_0000: begin  // STUR
 				Reg2Loc <= 1'b1;
 				ALUSrc <= 1'b1;
-				MemtoReg <= 1'b0;
+				MemtoReg <= 1'bx;
 				RegWrite <= 1'b0;
 				MemRead <= 1'b0;
 				MemWrite <= 1'b1;
@@ -29,7 +29,7 @@ module maindec(
 		11'b101_1010_0???: begin  // CBZ
 				Reg2Loc <= 1'b1;
 				ALUSrc <= 1'b0;
-				MemtoReg <= 1'b0;
+				MemtoReg <= 1'bx;
 				RegWrite <= 1'b0;
 				MemRead <= 1'b0;
 				MemWrite <= 1'b0;
