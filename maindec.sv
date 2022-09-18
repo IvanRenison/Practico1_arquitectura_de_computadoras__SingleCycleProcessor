@@ -22,7 +22,7 @@ module maindec(
 		else if (~ExtIRQ) begin
 			casez(Op)
 			11'b111_1100_0010: begin // LDUR
-					Reg2Loc <= 1'b0;
+					Reg2Loc <= 1'bx;
 					MemtoReg <= 1'b1;
 					RegWrite <= 1'b1;
 					MemRead <= 1'b1;
@@ -35,7 +35,7 @@ module maindec(
 				end
 			11'b111_1100_0000: begin  // STUR
 					Reg2Loc <= 1'b1;
-					MemtoReg <= 1'b0;
+					MemtoReg <= 1'bx;
 					RegWrite <= 1'b0;
 					MemRead <= 1'b0;
 					MemWrite <= 1'b1;
@@ -47,7 +47,7 @@ module maindec(
 				end
 			11'b101_1010_0???: begin  // CBZ
 					Reg2Loc <= 1'b1;
-					MemtoReg <= 1'b0;
+					MemtoReg <= 1'bx;
 					RegWrite <= 1'b0;
 					MemRead <= 1'b0;
 					MemWrite <= 1'b0;
@@ -71,7 +71,7 @@ module maindec(
 				end
 			11'b110_1011_0100: begin  // ERET
 					Reg2Loc <= 1'b0;
-					MemtoReg <= 1'b0;
+					MemtoReg <= 1'bx;
 					RegWrite <= 1'b0;
 					MemRead <= 1'b0;
 					MemWrite <= 1'b0;
@@ -89,20 +89,20 @@ module maindec(
 					MemWrite <= 1'b0;
 					Branch <= 1'b0;
 					ERet <= 1'b0;
-					ALUSrc <= 2'b10;
+					ALUSrc <= 2'b1x;
 					ALUOp <= 2'b01;
 					EStatus <= 4'b0000;
 				end
 			default: begin
-					Reg2Loc <= 1'b0;
+					Reg2Loc <= 1'bx;
 					MemtoReg <= 1'b0;
 					RegWrite <= 1'b0;
 					MemRead <= 1'b0;
 					MemWrite <= 1'b0;
 					Branch <= 1'b0;
 					ERet <= 1'b0;
-					ALUSrc <= 2'b00;
-					ALUOp <= 2'b00;
+					ALUSrc <= 2'bxx;
+					ALUOp <= 2'bxx;
 					EStatus <= 4'b0010;
 				end
 			endcase

@@ -23,9 +23,9 @@ module maindec_tb();
 
 	logic [25:0] inputs_and_expected_outputs [0:6] = '{
 	//   opcode             r2l   ALUs   mtr   rw    mr    mw    br    Eret  ALUo   EStatus
-		{11'b111_1100_0010, 1'b0, 2'b01, 1'b1, 1'b1, 1'b1, 1'b0, 1'b0, 1'b0, 2'b00, 4'b0000}, // LDUR
-		{11'b111_1100_0000, 1'b1, 2'b01, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0, 1'b0, 2'b00, 4'b0000}, // STUR
-		{11'b101_1010_0000, 1'b1, 2'b00, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0, 2'b01, 4'b0000}, // CBZ
+		{11'b111_1100_0010, 1'bx, 2'b01, 1'b1, 1'b1, 1'b1, 1'b0, 1'b0, 1'b0, 2'b00, 4'b0000}, // LDUR
+		{11'b111_1100_0000, 1'b1, 2'b01, 1'bx, 1'b0, 1'b0, 1'b1, 1'b0, 1'b0, 2'b00, 4'b0000}, // STUR
+		{11'b101_1010_0000, 1'b1, 2'b00, 1'bx, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0, 2'b01, 4'b0000}, // CBZ
 		{11'b100_0101_1000, 1'b0, 2'b00, 1'b0, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 2'b10, 4'b0000}, // ADD
 		{11'b110_0101_1000, 1'b0, 2'b00, 1'b0, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 2'b10, 4'b0000}, // SUB
 		{11'b100_0101_0000, 1'b0, 2'b00, 1'b0, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 2'b10, 4'b0000}, // AND
@@ -46,7 +46,7 @@ module maindec_tb();
 			#1ns;
 
 			if ({Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, ERet, ALUOp, EStatus}
-					!= {expected_Reg2Loc, expected_ALUSrc, expected_MemtoReg, expected_RegWrite, expected_MemRead, expected_MemWrite, expected_Branch, expected_ERet, expected_ALUOp, expected_EStatus}
+					!== {expected_Reg2Loc, expected_ALUSrc, expected_MemtoReg, expected_RegWrite, expected_MemRead, expected_MemWrite, expected_Branch, expected_ERet, expected_ALUOp, expected_EStatus}
 			) begin
 				errors++;
 				$display("ERROR: i = %d", i);
