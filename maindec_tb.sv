@@ -1,7 +1,7 @@
 module maindec_tb();
 
 	logic [10:0] opcode;
-	logic reset;
+	logic reset, ExtIRQ;
 
 	logic Reg2Loc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, ERet;
 	logic [1:0] ALUOp, ALUSrc;
@@ -10,6 +10,7 @@ module maindec_tb();
 	maindec dut(
 		.Op(opcode),
 		.reset(reset),
+		.ExtIRQ(ExtIRQ),
 		.Reg2Loc(Reg2Loc), .ALUSrc(ALUSrc), .MemtoReg(MemtoReg), .RegWrite(RegWrite),
 		.MemRead(MemRead), .MemWrite(MemWrite), .Branch(Branch), .ALUOp(ALUOp), .ERet(ERet),
 		.EStatus(EStatus)
@@ -35,6 +36,7 @@ module maindec_tb();
 	initial begin
 		reset = 0;
 		errors = 0;
+		ExtIRQ = 0;
 
 		for (int i = 0; i < 7; ++i) begin
 			#1ns;
@@ -52,6 +54,7 @@ module maindec_tb();
 		end
 
 		$display("Total errors = %d", errors);
+		$stop;
 	end
 
 endmodule

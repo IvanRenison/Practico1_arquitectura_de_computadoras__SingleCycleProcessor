@@ -1,12 +1,12 @@
 module maindec(
 		input logic [10:0] Op,
-		input logic reset,
+		input logic reset, ExtIRQ,
 		output logic Reg2Loc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, ERet,
 		output logic [1:0] ALUSrc, ALUOp,
 		output logic [3:0] EStatus
 	);
 
-	always_comb begin
+	always_latch begin
 		if (reset) begin
 			Reg2Loc <= 1'b0;
 			MemtoReg <= 1'b0;
@@ -19,7 +19,7 @@ module maindec(
 			ALUOp <= 2'b00;
 			EStatus <= 4'b0000;
 		end
-		else begin
+		else if (~ExtIRQ) begin
 			casez(Op)
 			11'b111_1100_0010: begin // LDUR
 					Reg2Loc <= 1'b0;
@@ -107,7 +107,9 @@ module maindec(
 				end
 			endcase
 		end
+		else begin
+			EStatus <= 4'b0001;
+		end
 	end
-
 
 endmodule
