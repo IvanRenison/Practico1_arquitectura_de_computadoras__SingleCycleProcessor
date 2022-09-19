@@ -9,7 +9,7 @@ module execute #(parameter N = 64) (
 	logic [N-1:0] MUX_out;
 	logic [N-1:0] sl2_out;
 
-	mux4 #(N) MUX(readData2_E, signImm_E, readData3_E, readData3_E, AluSrc, MUX_out);
+	mux4 #(N) MUX(readData2_E, signImm_E, readData3_E, readData3_E, '{AluSrc[1], AluSrc[0]}, MUX_out);
 	sl2 #(N) sl2(signImm_E, sl2_out);
 	adder #(N) adder(PC_E, sl2_out, PCBranch_E);
 	alu #(N) alu(readData1_E, MUX_out, AluControl, aluResult_E, zero_E);
