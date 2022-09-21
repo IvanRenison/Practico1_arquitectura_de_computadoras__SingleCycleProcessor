@@ -6,7 +6,8 @@ module maindec(
 		output logic [3:0] EStatus
 	);
 
-	always_latch begin
+
+	always_comb begin
 		if (reset) begin
 			Reg2Loc <= 1'b0;
 			MemtoReg <= 1'b0;
@@ -19,7 +20,7 @@ module maindec(
 			ALUOp <= 2'b00;
 			EStatus <= 4'b0000;
 		end
-		else if (~ExtIRQ) begin
+		else begin
 			casez(Op)
 			11'b111_1100_0010: begin // LDUR
 					Reg2Loc <= 1'bx;
@@ -31,7 +32,7 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'b01;
 					ALUOp <= 2'b00;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			11'b111_1100_0000: begin  // STUR
 					Reg2Loc <= 1'b1;
@@ -43,7 +44,7 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'b01;
 					ALUOp <= 2'b00;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			11'b101_1010_0???: begin  // CBZ
 					Reg2Loc <= 1'b1;
@@ -55,7 +56,7 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'b00;
 					ALUOp <= 2'b01;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			11'b100_0101_1000, 11'b110_0101_1000, 11'b100_0101_0000, 11'b101_0101_0000: begin // ADD, SUB, AND, ORR (tipo R)
 					Reg2Loc <= 1'b0;
@@ -67,7 +68,7 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'b00;
 					ALUOp <= 2'b10;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			11'b110_1011_0100: begin  // ERET
 					Reg2Loc <= 1'b0;
@@ -79,7 +80,7 @@ module maindec(
 					ERet <= 1'b1;
 					ALUSrc <= 2'b00;
 					ALUOp <= 2'b01;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			11'b110_1010_1001: begin  // MRS
 					Reg2Loc <= 1'b1;
@@ -91,7 +92,7 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'b1x;
 					ALUOp <= 2'b01;
-					EStatus <= 4'b0000;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0000;
 				end
 			default: begin
 					Reg2Loc <= 1'bx;
@@ -103,12 +104,9 @@ module maindec(
 					ERet <= 1'b0;
 					ALUSrc <= 2'bxx;
 					ALUOp <= 2'bxx;
-					EStatus <= 4'b0010;
+					EStatus <= ExtIRQ ? 4'b0001 : 4'b0010;
 				end
 			endcase
-		end
-		else begin
-			EStatus <= 4'b0001;
 		end
 	end
 
